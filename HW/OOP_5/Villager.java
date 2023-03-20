@@ -16,32 +16,7 @@ public class Villager extends Creature {
 
     @Override
     public void step(List<Creature> Team_B, List<Creature> Team_A) {
-
-    }
-
-    public void step(List<Creature> Team_A) {
-
-        Collections.sort(Team_A, new Comparator<Creature>() {
-            public int compare(Creature c1, Creature c2) {
-                if (c1.priorityHealerEnum.getCode() > c1.priorityHealerEnum.getCode()) {
-                    return 1;
-                } else {
-                    return -1;
-
-                }
-            }
-        });
-        for (Creature friend : Team_A) {
-
-            if (friend.getCurrentHealth() < friend.getMaxHealth() && friend.getCurrentHealth() != 0) {
-                friend.setCurrentHealth(getCurrentHealth() + 5);
-                if (friend.getCurrentHealth() > friend.getMaxHealth()) {
-                    friend.setCurrentHealth(friend.getMaxHealth());
-                }
-                return;
-            }
-
-        }
+        if (!state.equals("Die")) state = "Stand";
     }
 
     public String getInfo() {
